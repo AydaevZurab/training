@@ -1,10 +1,15 @@
+const News = require("../models/News.model")
+
 module.exports.newsController = {
     getNews: (req, res) => {
-        res.json('all news')
+        News.find().then((allNews) => {
+            res.json(allNews)
+        })
     },
     
     getNewsById: (req, res) => {
-        res.json(`news by id - ${req.params.id}`)
+        News.findById(req.params.id).then((newsId) => {
+            res.json(newsId)})
     },
 
     getNewsByIdAndCats: (req, res) => {
@@ -16,6 +21,11 @@ module.exports.newsController = {
     },
 
     addNews: (req, res) => {
-        res.status(201).json(req.body)
+        News.create({
+            title: req.body.title,
+            text: req.body.text
+        }).then((addNews) => {
+            res.json(addNews)
+        })
     }
 }
