@@ -7,4 +7,6 @@ router.get('/', categoriesController.getCats);
 
 router.post('/', categoriesController.addCats);
 
+router.delete('/:id', categoriesController.removeCats)
+
 module.exports = router

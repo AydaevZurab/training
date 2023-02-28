@@ -10,10 +10,15 @@ module.exports.categoriesController = {
 
     addCats: (req, res) => {
         Category.create({
-            name: req.body.name,
-            text: req.body.text
+            name: req.body.name
         }).then((addCategory) => {
             res.status(201).json(addCategory)
-        });
+        }); 
+    },
+
+    removeCats: (req, res) => {
+        Category.findByIdAndRemove(req.params.id).then(() => {
+            res.json('deleted')
+        })
     }
 };

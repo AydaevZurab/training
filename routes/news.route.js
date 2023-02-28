@@ -9,4 +9,8 @@ router.get('/:id', newsController.getNewsById);
 
 router.post('/', newsController.addNews);
 
+router.patch('/:id', newsController.updateNews);
+
+router.delete('/:id', newsController.removeNews)
+
 module.exports = router
