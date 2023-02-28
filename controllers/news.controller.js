@@ -12,20 +12,12 @@ module.exports.newsController = {
             res.json(newsId)})
     },
 
-    getNewsByIdAndCats: (req, res) => {
-        res.json(`news by id - ${req.params.id}, all cats`)
-    },
-
-    getNewsByIdAndCatsById: (req, res) => {
-        res.json(`news by id - ${req.params.newsId} from cats by id - ${req.params.catsId}`)
-    },
-
     addNews: (req, res) => {
         News.create({
             title: req.body.title,
             text: req.body.text
         }).then((addNews) => {
-            res.json(addNews)
+            res.status(201).json(addNews)
         })
     }
-}
+};

@@ -1,10 +1,19 @@
+const Category = require('../models/Category.model')
+
 module.exports.categoriesController = {
 
     getCats: (req, res) => {
-        res.json('all cats')
+        Category.find().then((allCategory) => {
+            res.json(allCategory)
+        });
     },
 
-    addcats: (req, res) => {
-        res.status(201).json(req.body)
+    addCats: (req, res) => {
+        Category.create({
+            name: req.body.name,
+            text: req.body.text
+        }).then((addCategory) => {
+            res.status(201).json(addCategory)
+        });
     }
 };

@@ -5,6 +5,6 @@ const router = Router();
 
 router.get('/', categoriesController.getCats);
 
-router.post('/', categoriesController.addcats);
+router.post('/', categoriesController.addCats);
 
 module.exports = router
