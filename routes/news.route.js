@@ -7,6 +7,8 @@ router.get('/', newsController.getNews);
 
 router.get('/:id', newsController.getNewsById);
 
+router.get('/category/:id', newsController.getNewsByCat)
+
 router.post('/', newsController.addNews);
 
 router.patch('/:id', newsController.updateNews);
