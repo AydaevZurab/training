@@ -1,22 +1,26 @@
 const News = require("../models/News.model")
 
 module.exports.newsController = {
-    getNews: (req, res) => {
-        News.find().then((data) => {
-            res.json(data)
-        })
+    getNews: async (req, res) => {
+      const news = await News.find()
+
+      res.json(news)
     },
 
     getNewsById: (req, res) => {
-        News.findById(req.params.id).then((data) => {
+        News.findById(req.params.id)
+        .populate('category')
+        .then((data) => {
             res.json(data)
         })
     },
 
     getNewsByCat: (req, res) => {
-        News.find({ category: req.params.id }, (err, data) => {
-            return res.json(data)
-        }).populate("category")
+        News.find({ category: req.params.id })
+        .populate('category')
+        .then((data) => {
+            res.json(data)
+        })
     },
 
     addNews: (req, res) => {
